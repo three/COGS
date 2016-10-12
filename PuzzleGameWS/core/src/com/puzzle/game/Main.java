@@ -28,13 +28,16 @@ public class Main extends ApplicationAdapter {
 	//PointLight is a light 
 	private PointLight light;
 	private PointLight light2;
+	
+	//used to render test boxes
 	private Box2DDebugRenderer brenderer;
+	
+	
 	private OrthographicCamera camera;
 	
 	@SuppressWarnings("deprecation")
 	@Override
 	public void create () {
-		
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		brenderer = new Box2DDebugRenderer();
 		world = new World(new Vector2(0,-900), false);
@@ -48,6 +51,8 @@ public class Main extends ApplicationAdapter {
 
 	@Override
 	public void render () {
+		
+		//OpenGL - Open Graphics Library
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
@@ -55,9 +60,6 @@ public class Main extends ApplicationAdapter {
 		world.step(1/60f, 4, 2);
 		brenderer.render(world, camera.combined);
 		rayHandler.updateAndRender();
-		
-		
-		
 	}
 	
 	private void createBody(BodyType bType, float restitution, float positionX, float positionY, 
@@ -71,6 +73,7 @@ public class Main extends ApplicationAdapter {
 		
 		PolygonShape shape = new PolygonShape();
 		FixtureDef fdef = new FixtureDef();
+		
 		fdef.restitution = restitution;
 		shape.setAsBox(sizeX, sizeY);
 		fdef.shape = shape;
