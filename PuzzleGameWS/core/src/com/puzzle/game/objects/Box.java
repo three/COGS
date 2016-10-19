@@ -1,4 +1,4 @@
-package com.puzzle.game;
+package com.puzzle.game.objects;
 
 public class Box
 {

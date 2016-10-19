@@ -1,4 +1,4 @@
-package com.puzzle.game;
+package com.puzzle.game.levels;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.puzzle.game.objects.BoxPool;
 
 //IMPORT SHORTCUT - ctrl + shift + o
 
@@ -57,7 +58,6 @@ public class LevelOne implements Screen
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		sRenderer.setColor(Color.CYAN);
-		
 		
 		//begins drawing
 		sRenderer.begin();
