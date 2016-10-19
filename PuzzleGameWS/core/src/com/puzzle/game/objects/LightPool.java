@@ -43,5 +43,10 @@ public class LightPool
 			sRenderer.end();
 		}
 	}
+
+	public ArrayList<Line> getLights()
+	{
+		return lights;
+	}
 	
 }

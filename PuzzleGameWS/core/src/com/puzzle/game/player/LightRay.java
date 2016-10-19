@@ -7,20 +7,15 @@ public class LightRay
 {
 
 	private LightPool lightPool;
-	private boolean isEmitting;
 	
 	public LightRay()
 	{
 		lightPool = new LightPool();
-		isEmitting = false;
 	}
 	
 	public void render(ShapeRenderer sRenderer)
 	{
-		if(isEmitting)
-		{
-			lightPool.render(sRenderer);
-		}
+		lightPool.render(sRenderer);
 	}
 	
 	public void update()

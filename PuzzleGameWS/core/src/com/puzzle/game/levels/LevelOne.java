@@ -13,8 +13,10 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.puzzle.game.objects.BoxPool;
 import com.puzzle.game.player.Player;
 
-//IMPORT SHORTCUT - ctrl + shift + o
-
+/** 
+ * 
+ * @author Douglas Rudolph
+ */
 public class LevelOne implements Screen
 {
 

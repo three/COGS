@@ -40,8 +40,13 @@ public class BoxPool
 			sRenderer.rect(b.getX(), b.getY(), b.getWidth(), b.getHeight());
 			sRenderer.end();
 		}
-		
-		
 	}
+
+	public ArrayList<Box> getBoxPool()
+	{
+		return boxPool;
+	}
+	
+	
 	
 }
