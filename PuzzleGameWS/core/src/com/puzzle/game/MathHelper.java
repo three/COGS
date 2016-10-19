@@ -3,6 +3,8 @@ package com.puzzle.game;
 public class MathHelper
 {
 
+	
+	
 	/**
 	 * TODO: Fix the case where the slope returns infinity 
 	 * @param l

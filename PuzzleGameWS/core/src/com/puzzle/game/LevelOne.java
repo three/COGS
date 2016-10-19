@@ -23,6 +23,12 @@ public class LevelOne implements Screen
 	private Box2DDebugRenderer bRenderer;
 	private World world; 
 	
+//************************************************
+	
+	private BoxPool boxPool;
+	
+	
+	
 	@Override
 	public void show()
 	{
@@ -35,6 +41,12 @@ public class LevelOne implements Screen
 		
 		bRenderer = new Box2DDebugRenderer();
 		world = new World(new Vector2(0, -9.8f), false);
+		
+		boxPool = new BoxPool();
+		boxPool.add(10,10,10,10);
+		boxPool.add(100,25,15,50);
+		boxPool.add(300,400,100,45);
+		boxPool.add(200,200,30,30);
 	}
 
 	@Override
@@ -44,22 +56,16 @@ public class LevelOne implements Screen
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		
-		
 		sRenderer.setColor(Color.CYAN);
 		
 		
 		//begins drawing
 		sRenderer.begin();
-		
 		sRenderer.line(50,20, 0,0);
-		
-		//x,y,width, height
-		sRenderer.rect(10, 10, 10, 10);
-		
-		
 		//stops drawing
 		sRenderer.end();
+		
+		boxPool.render(sRenderer);
 		
 	}
 
