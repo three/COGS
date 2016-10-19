@@ -2,6 +2,8 @@ package com.puzzle.game.objects;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 public class LightPool
 {
 
@@ -30,6 +32,16 @@ public class LightPool
 	public void get(int index)
 	{
 		lights.get(index);
+	}
+	
+	public void render(ShapeRenderer sRenderer)
+	{
+		for(Line l : lights)
+		{
+			sRenderer.begin();
+			sRenderer.line(l.getX1(), l.getY1(), l.getX2(), l.getY2());
+			sRenderer.end();
+		}
 	}
 	
 }

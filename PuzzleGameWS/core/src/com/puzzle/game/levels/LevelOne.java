@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.puzzle.game.objects.BoxPool;
+import com.puzzle.game.player.Player;
 
 //IMPORT SHORTCUT - ctrl + shift + o
 
@@ -27,8 +28,7 @@ public class LevelOne implements Screen
 //************************************************
 	
 	private BoxPool boxPool;
-	
-	
+	private Player player;
 	
 	@Override
 	public void show()
@@ -48,6 +48,7 @@ public class LevelOne implements Screen
 		boxPool.add(100,25,15,50);
 		boxPool.add(300,400,100,45);
 		boxPool.add(200,200,30,30);
+		player = new Player(10,10);
 	}
 
 	@Override
@@ -56,6 +57,12 @@ public class LevelOne implements Screen
 		//RGB(Red, Green, Blue)
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+
+		player.update();
+		player.render(sRenderer);
+		
+		
 		
 		sRenderer.setColor(Color.CYAN);
 		
@@ -66,6 +73,7 @@ public class LevelOne implements Screen
 		sRenderer.end();
 		
 		boxPool.render(sRenderer);
+		
 		
 	}
 
