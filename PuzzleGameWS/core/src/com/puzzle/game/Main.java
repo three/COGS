@@ -17,6 +17,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import box2dLight.PointLight;
 import box2dLight.RayHandler;
 
+/**
+ * Main.java
+ * Purpose: Was a demo to lead into using lighting
+ * @author Douglas Rudolph
+ */
 public class Main extends ApplicationAdapter {
 	
 	//physics world

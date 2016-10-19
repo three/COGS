@@ -1,9 +1,12 @@
 package com.puzzle.game.objects;
 
+/**
+ * File: MathHelper.java
+ * Purpose: Helper file used to find the slope and find the inverse. Used for adding lines on screen
+ * @author Douglas Rudolph
+ */
 public class MathHelper
 {
-
-	
 	
 	/**
 	 * TODO: Fix the case where the slope returns infinity 
@@ -17,7 +20,7 @@ public class MathHelper
 	}
 	
 	/**
-	 * 
+	 * inverts the slope of the line
 	 * @param m: the slope of a line
 	 * @return the reciprocal 
 	 */
