@@ -2,7 +2,6 @@ package com.puzzle.game.levels;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.puzzle.game.objects.BoxPool;
+import com.puzzle.game.objects.Line;
 import com.puzzle.game.player.Player;
 
 /** 
@@ -50,6 +50,7 @@ public class LevelOne implements Screen
 		
 		//create a camera for the level
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
 		//draws images on screen 
 		batch = new SpriteBatch();
 		
@@ -83,6 +84,9 @@ public class LevelOne implements Screen
 		
 		//render the all the boxes in the box pool on the screen
 		boxPool.render(sRenderer);
+		
+		
+		
 	}
 
 	@Override

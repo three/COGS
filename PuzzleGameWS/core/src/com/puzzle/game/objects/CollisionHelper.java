@@ -1,5 +1,9 @@
 package com.puzzle.game.objects;
 
+import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.physics.box2d.Shape;
+
 /**
  * File: CollisionHelper.java
  * Purpose: Helper class to help with collision handling 
@@ -32,7 +36,13 @@ public class CollisionHelper
 	 */
 	public boolean isColliding(Box b, Line l)
 	{
-		 return false;
+		Rectangle box = new Rectangle(b.getX(), b.getY(),b.getWidth(), b.getHeight());
+		
+		float[] lineVert = {l.getX1(), l.getY1(), l.getX2(), l.getY2()};
+		Polygon p= new Polygon(lineVert);
+		
+		
+		return false;
 	}
 	
 	/**
