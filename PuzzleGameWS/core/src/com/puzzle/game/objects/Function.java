@@ -64,7 +64,7 @@ public class Function
 	 * @param f2: function 2
 	 * @return the vector where these two functions intersect
 	 */
-	public static Vector2 pointtOfIntersection(Function f1, Function f2)
+	public static Vector2 pointOfIntersection(Function f1, Function f2)
 	{
 		float x;
 		

@@ -2,6 +2,7 @@ package com.puzzle.game.objects;
 
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Shape;
 
 /**
@@ -13,10 +14,10 @@ public class CollisionHelper
 {
 	
 	//reference to BoxPool
-	private BoxPool		boxPool;
+	private BoxPool	boxPool;
 	
 	//reference to LightPool
-	private LightPool	lightPool;
+	private LightPool lightPool;
 
 	/**
 	 * 
@@ -34,15 +35,28 @@ public class CollisionHelper
 	 * @return true: if a line is colliding with a box
 	 * @return false: if a line is not colliding with a box
 	 */
-	public boolean isColliding(Box b, Line l)
-	{
-		Rectangle box = new Rectangle(b.getX(), b.getY(),b.getWidth(), b.getHeight());
+	public Vector2 collisionPoint(Box b, Line l)
+	{	
+		Function fBot = new Function(new Vector2(b.getX(), b.getY()), new Vector2(b.getX() + b.getWidth(), b.getY()));
+		Function fTop = new Function(new Vector2(b.getX(), b.getY() + b.getHeight()), new Vector2(b.getX()+ b.getWidth(), b.getY() + b.getHeight()));
+		Function fLeft = new Function(new Vector2(b.getX(), b.getY()), new Vector2(b.getX(), b.getY() + b.getHeight()));
+		Function fRight = new Function(new Vector2(b.getX() + b.getWidth(), b.getY()), new Vector2(b.getX() + b.getWidth(), b.getY() + b.getHeight())); 
+		//functions generated from sides of the box
 		
-		float[] lineVert = {l.getX1(), l.getY1(), l.getX2(), l.getY2()};
-		Polygon p= new Polygon(lineVert);
+		Function functions [] = {fBot, fTop, fLeft, fRight}; 
+		//function generated from the line 
 		
+		Function lineFunction = new Function(new Vector2(l.getX1(), l.getY1()), new Vector2(l.getX2(), l.getY2()));
 		
-		return false;
+		for(Function f : functions)
+		{
+			Vector2 pointOfInt = Function.pointOfIntersection(lineFunction, f);
+			if(b.contains(pointOfInt) == true)
+			{
+				return pointOfInt;
+			}
+		}
+		return null;
 	}
 	
 	/**
@@ -61,3 +75,4 @@ public class CollisionHelper
 	
 
 }
+

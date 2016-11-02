@@ -1,16 +1,21 @@
 package com.puzzle.game.objects;
 
+import javax.sound.sampled.Line;
+
+import com.badlogic.gdx.math.Rectangle;
+
 /**
  * File: Box.java
  * Purpose: Used to keep tracks of boxes that can "reflect" lines on screen.
  * @author Douglas Rudolph
  */
-public class Box
+public class Box extends Rectangle
 {
 	//x and y coordinate
 	//width and height
-	float x, y, width, height;
-
+	float xCord, yCord, widthSize, heightSize;
+	Line l;
+	
 	/**
 	 * Initializes values 
 	 * @param x: x coordinate 
@@ -18,12 +23,28 @@ public class Box
 	 * @param width: width of box
 	 * @param height: height of box
 	 */
-	public Box(float x, float y, float width, float height)
+	public Box(float xCord, float yCord, float widthSize, float heightSize)
 	{
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.xCord = xCord;
+		this.yCord = yCord;
+		this.widthSize = widthSize;
+		this.heightSize = heightSize;
+	}
+	
+	private Line lines[];
+	/**
+	 * upper, right, bottom, left
+	 * @param lines
+	 */
+	public Box(Line ... lines) //bunch of lines for the box
+	{
+		this.lines = new Line[4];
+		int index = 0;
+		for(Line l: lines)
+		{
+			this.lines[index++] = l;
+			
+		}
 	}
 
 	/**
@@ -34,65 +55,39 @@ public class Box
 		return x;
 	}
 
-	/**
-	 * @param x: sets x coordinate
-	 */
-	public void setX(float x)
-	{
-		this.x = x;
+	public float getxCord() {
+		return xCord;
 	}
 
-	/**
-	 * @return y: returns y coordinate
-	 */
-	public float getY()
-	{
-		return y;
+	public void setxCord(float xCord) {
+		this.xCord = xCord;
 	}
 
-	/**
-	 * @param y: sets y coordinate
-	 */
-	public void setY(float y)
-	{
-		this.y = y;
+	public float getyCord() {
+		return yCord;
 	}
 
-	/**
-	 * @return width: returns box width 
-	 */
-	public float getWidth()
-	{
-		return width;
+	public void setyCord(float yCord) {
+		this.yCord = yCord;
 	}
 
-	/**
-	 * 
-	 * @param width: sets box width 
-	 */
-	public void setWidth(float width)
-	{
-		this.width = width;
+	public float getWidthSize() {
+		return widthSize;
 	}
 
-	/**
-	 * 
-	 * @return height: returns box height 
-	 */
-	public float getHeight()
-	{
-		return height;
+	public void setWidthSize(float widthSize) {
+		this.widthSize = widthSize;
 	}
 
-	/**
-	 * 
-	 * @param height: sets  box height
-	 */
-	public void setHeight(float height)
-	{
-		this.height = height;
+	public float getHeightSize() {
+		return heightSize;
 	}
 
+	public void setHeightSize(float heightSize) {
+		this.heightSize = heightSize;
+	}
+
+	
 	
 
 }
