@@ -97,7 +97,7 @@ public class Function
 	 */
 	public float solveForX(float y)
 	{
-		return y/m -b;
+		return (float) (y-b) / m;
 	}
 
 	/**
