@@ -28,5 +28,9 @@ public class MathHelper
 	{
 		return (double) (-1*Math.pow(m, -1));
 	}
-
+	
+	/*public static Vector3 toVector3(Line l)
+	{
+		double
+	}*/
 }
