@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.puzzle.game.objects.box.Box;
+import com.puzzle.game.objects.box.HBox;
+import com.puzzle.game.objects.box.VBox;
 
 /**
  * File: BoxPool.java
@@ -33,22 +36,43 @@ public class BoxPool
 	}
 	
 	/**
-	 * Allows for boxes to be added parameters
+	 * Takes in a list of boxes and loads it into the boxpool
+	 * @param boxList
+	 */
+	public void addList(ArrayList<Box> boxList)
+	{
+		this.boxPool = boxList;
+	}
+	
+	/**
+	 * Allows for Vboxes to be added parameters
 	 * @param x: x coordinate
 	 * @param y: y coordinate
 	 * @param width: width of box
 	 * @param height: height of box
 	 */
-	public void add(float x, float y, float width, float height)
+	public void addVBox(float x, float y, float width, float height)
 	{
-		boxPool.add(new Box(x,y,width,height));
+		boxPool.add(new VBox(x,y,width,height));
+	}
+	
+	/**
+	 * Allows for Hboxes to be added parameters
+	 * @param x: x coordinate
+	 * @param y: y coordinate
+	 * @param width: width of box
+	 * @param height: height of box
+	 */
+	public void addHBox(float x, float y, float width, float height)
+	{
+		boxPool.add(new HBox(x,y,width,height));
 	}
 	
 	/**
 	 * render the boxes to the screen
 	 * @param sRenderer: ShapeRenderer that will render all the boxes on screen
 	 */
-	public void render(ShapeRenderer sRenderer)
+	public void updateAndRender(ShapeRenderer sRenderer)
 	{
 		sRenderer.setColor(Color.CYAN);
 		
@@ -57,9 +81,12 @@ public class BoxPool
 			sRenderer.begin();
 			sRenderer.rect(b.getX(), b.getY(), b.getWidth(), b.getHeight());
 			sRenderer.end();
+			
+			b.update();
 		}
 	}
-
+	
+	
 	/**
 	 * 
 	 * @return boxPool: returns the list of boxes

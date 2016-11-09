@@ -2,6 +2,7 @@ package com.puzzle.game.levels;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,7 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.puzzle.game.objects.BoxPool;
-import com.puzzle.game.objects.Line;
+import com.puzzle.game.objects.LevelLoader;
 import com.puzzle.game.player.Player;
 
 /** 
@@ -40,6 +41,10 @@ public class LevelOne implements Screen
 	//player object for the game
 	private Player player;
 	
+	
+	private LevelLoader lvlLoader;
+	
+	
 	@Override
 	public void show()
 	{
@@ -50,6 +55,10 @@ public class LevelOne implements Screen
 		
 		//create a camera for the level
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera.setToOrtho(true);
+		
+		//make it so that the images are projected with the camera. 
+		sRenderer.setProjectionMatrix(camera.combined);
 		
 		//draws images on screen 
 		batch = new SpriteBatch();
@@ -59,12 +68,16 @@ public class LevelOne implements Screen
 		//used to update physics bodies on screen 
 		world = new World(new Vector2(0, -9.8f), false);
 		
-		//all the boxes being rendered to the screen
+		//creates a BoxPool
 		boxPool = new BoxPool();
-		boxPool.add(10,10,10,10);
-		boxPool.add(100,25,15,50);
-		boxPool.add(300,400,100,45);
-		boxPool.add(200,200,30,30);
+		
+		//add a level and ensures only one instance is created;
+		lvlLoader = LevelLoader.createLevelLoader();
+		
+		//add a level loader to load in the boxes dynamically from a file
+		boxPool.addList(lvlLoader.loadLevel(Gdx.files.internal("level1.txt")));
+		
+		
 		player = new Player(10,10);
 	}
 
@@ -83,9 +96,7 @@ public class LevelOne implements Screen
 		player.render(sRenderer);
 		
 		//render the all the boxes in the box pool on the screen
-		boxPool.render(sRenderer);
-		
-		
+		boxPool.updateAndRender(sRenderer);
 		
 	}
 

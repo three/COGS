@@ -1,6 +1,7 @@
 package com.puzzle.game.objects;
 
 import com.badlogic.gdx.math.Vector2;
+import com.puzzle.game.objects.box.Box;
 
 /**
  * File: CollisionHelper.java
