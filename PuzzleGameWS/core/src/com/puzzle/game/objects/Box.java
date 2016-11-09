@@ -25,6 +25,25 @@ public class Box
 		this.width = width;
 		this.height = height;
 	}
+	
+	private Line lines[];
+	
+	/**
+	 * upper, right, bottom, left
+	 * @param lines
+	 */
+	public Box(Line ...lines)
+	{
+		
+		this.lines = new Line[4];
+		
+		int index=0;
+		
+		for(Line l: lines)
+		{
+			this.lines[index++]=l;
+		}
+	}
 
 	/**
 	 * @return x coordinate
